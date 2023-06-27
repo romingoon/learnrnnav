@@ -1,9 +1,16 @@
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { View, Text, TouchableOpacity } from 'react-native';
+import { HeaderBackButtonProps } from '@react-navigation/native-stack/lib/typescript/src/types';
 
 import HomeScreen from './screens/HomeScreen';
 import DetailScreen from './screens/DetailScreen';
+import HeaderlessScreen from './screens/HeaderlessScreen';
+
+type HeaderBackButtonPropsWithOnPress = HeaderBackButtonProps & {
+  onPress?: () => void;
+};
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -32,8 +39,28 @@ const App = () => {
         <Stack.Screen
           name='Detail'
           component={DetailScreen}
-          options={({ route }) => ({ title: `상세 정보 - ${route.params.id}` })}
+          options={{
+            headerBackVisible: false,
+            headerLeft: ({ onPress }: HeaderBackButtonPropsWithOnPress) => (
+              <TouchableOpacity onPress={onPress}>
+                <View style={{ marginLeft: 10 }}>
+                  <Text style={{ fontSize: 20 }}>뒤로</Text>
+                </View>
+              </TouchableOpacity>
+            ),
+            headerTitle: ({ children }) => (
+              <View style={{ alignItems: 'center' }}>
+                <Text>{children}</Text>
+              </View>
+            ),
+            headerRight: () => (
+              <View>
+                <Text>...</Text>
+              </View>
+            ),
+          }}
         />
+        <Stack.Screen name='Headerless' component={HeaderlessScreen} options={{ headerShown: false }} />
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -44,6 +71,7 @@ export type RootStackParamList = {
   Detail: {
     id: number;
   };
+  Headerless: undefined;
 };
 
 export default App;
