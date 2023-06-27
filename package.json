@@ -1,5 +1,5 @@
 {
-  "name": "LearnRnNav",
+  "name": "learnrnnav",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -10,8 +10,15 @@
     "test": "jest"
   },
   "dependencies": {
+    "@react-native-community/eslint-config": "^3.2.0",
+    "@react-navigation/native": "^6.1.7",
+    "@react-navigation/native-stack": "^6.9.13",
+    "@typescript-eslint/eslint-plugin": "^5.60.1",
+    "@typescript-eslint/parser": "^5.60.1",
     "react": "18.2.0",
-    "react-native": "0.72.0"
+    "react-native": "0.72.0",
+    "react-native-safe-area-context": "^4.6.3",
+    "react-native-screens": "^3.22.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
@@ -25,6 +32,10 @@
     "@types/react-test-renderer": "^18.0.0",
     "babel-jest": "^29.2.1",
     "eslint": "^8.19.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-import-resolver-babel-module": "^5.3.2",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-prettier": "^4.2.1",
     "jest": "^29.2.1",
     "metro-react-native-babel-preset": "0.76.5",
     "prettier": "^2.4.1",
