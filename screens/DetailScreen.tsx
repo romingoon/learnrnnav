@@ -11,7 +11,11 @@ const DetailScreen = ({ route, navigation }: DetailScreenProps) => {
   return (
     <View style={styles.block}>
       <Text style={styles.text}>id = {route.params.id}</Text>
-      <Button title='다음' onPress={() => navigation.push('Detail', { id: route.params.id + 1 })} />
+      <Button title='다음(push)' onPress={() => navigation.push('Detail', { id: route.params.id + 1 })} />
+      <Button
+        title='다음(navigate)'
+        onPress={() => navigation.navigate('Detail', { id: route.params.id + 1 })}
+      />
     </View>
   );
 };
