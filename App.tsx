@@ -11,7 +11,24 @@ const App = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName='Home'>
-        <Stack.Screen name='Home' component={HomeScreen} options={{ title: '홈' }} />
+        <Stack.Screen
+          name='Home'
+          component={HomeScreen}
+          options={{
+            title: '홈',
+            // Header 블록에 대한 스타일 지정
+            headerStyle: {
+              backgroundColor: '#f4511e',
+            },
+            // Header의 텍스트, 버튼들 색상 지정
+            headerTintColor: '#fff',
+            // 타이틀 텍스트의 스타일
+            headerTitleStyle: {
+              fontWeight: 'bold',
+              fontSize: 20,
+            },
+          }}
+        />
         <Stack.Screen
           name='Detail'
           component={DetailScreen}
