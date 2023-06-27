@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../App';
 import { View, Button } from 'react-native';
@@ -6,6 +6,12 @@ import { View, Button } from 'react-native';
 export type HomeScreenProps = NativeStackScreenProps<RootStackParamList, 'Home'>;
 
 const HomeScreen = ({ navigation }: HomeScreenProps) => {
+  useEffect(() => {
+    navigation.setOptions({
+      title: '홈',
+    });
+  }, [navigation]);
+
   return (
     <View>
       <Button title='Detail 1 열기' onPress={() => navigation.push('Detail', { id: 1 })} />
