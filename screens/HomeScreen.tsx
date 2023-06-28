@@ -1,7 +1,10 @@
 import React from 'react';
+import { NativeStackScreenProps, NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { RootStackParamList } from '../App';
 import { View, Text, Button } from 'react-native';
 
-type HomeScreenProps = {
+type HomeScreenNavigationProp = NativeStackScreenProps<RootStackParamList, 'Home'>;
+export type HomeScreenProps = {
   navigation: {
     openDrawer: () => void;
     navigate: (screen: string) => void;
