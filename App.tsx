@@ -1,46 +1,35 @@
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { createDrawerNavigator } from '@react-navigation/drawer';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import { Text, Button } from 'react-native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
-import HomeScreen from './screens/HomeScreen';
-import SettingScreen from './screens/SettingScreen';
+import MainScreen from './screens/MainScreen';
+import DetailScreen from './screens/DetailScreen';
 
-const Drawer = createDrawerNavigator<RootStackParamList>();
+const Stack = createNativeStackNavigator<RootStackParamList>();
 
 const App = () => {
   return (
     <NavigationContainer>
-      <Drawer.Navigator
-        initialRouteName='Home'
-        screenOptions={{
-          drawerPosition: 'left',
-        }}
-        backBehavior='history'
-        drawerContent={({ navigation }) => {
-          return (
-            <SafeAreaView style={{ flex: 1 }}>
-              <Text>A custom Drawer</Text>
-              <Button onPress={() => navigation.closeDrawer()} title='drawer 닫기' />
-            </SafeAreaView>
-          );
-        }}
-      >
-        <Drawer.Screen
-          name='Home'
-          component={HomeScreen}
-          options={{ title: '홈', headerLeft: () => <Text>Left</Text> }}
-        />
-        <Drawer.Screen name='Setting' component={SettingScreen} options={{ title: '설정' }} />
-      </Drawer.Navigator>
+      <Stack.Navigator>
+        <Stack.Screen name='Home' component={MainScreen} options={{ headerShown: false }} />
+        <Stack.Screen name='Detail' component={DetailScreen} />
+      </Stack.Navigator>
     </NavigationContainer>
   );
 };
 
 export type RootStackParamList = {
-  Home: undefined;
-  Setting: undefined;
+  Home: {
+    name: string;
+    component: React.ComponentType<{}>;
+  };
+  Detail: {
+    id: number;
+  };
+  Search: undefined;
+  Notification: undefined;
+  Message: undefined;
 };
 
 export default App;
