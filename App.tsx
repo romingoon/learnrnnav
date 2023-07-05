@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { getFocusedRouteNameFromRoute, NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import Icon from 'react-native-vector-icons/MaterialIcons';
-
+import { RootStackParamList } from './types';
 import MainScreen from './screens/MainScreen';
 import DetailScreen from './screens/DetailScreen';
 
@@ -33,20 +32,6 @@ const App = () => {
       </Stack.Navigator>
     </NavigationContainer>
   );
-};
-
-export type RootStackParamList = {
-  Home: {
-    name: string;
-    component: React.ComponentType<{}>;
-  };
-  Main: undefined;
-  Detail: {
-    id: number;
-  };
-  Search: undefined;
-  Notification: undefined;
-  menu: undefined;
 };
 
 export default App;
